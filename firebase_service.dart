@@ -24,8 +24,8 @@ class FirebaseService {
   void add(object) => _collection.add(object.toFirestore());
 
   // Modifie un document à la collection.
-  void update(String doc, object) =>
-      _collection.doc(doc).update(object.toFirestore());
+  void update(object) =>
+      _collection.doc(object.id).update(object.toFirestore());
 
   // Supprime un document à la collection.
   void delete(String doc) => _collection.doc(doc).delete();
