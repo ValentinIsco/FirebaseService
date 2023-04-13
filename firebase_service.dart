@@ -20,28 +20,28 @@ class FirebaseService {
 
   /* --------------------- Ajout/Modification/Suppression --------------------- */
 
-  // Ajoute un document à la collection.
+  /// Ajoute un document à la collection.
   void add(object) => _collection.add(object.toFirestore());
 
-  // Modifie un document à la collection.
+  /// Modifie un document à la collection.
   void update(object) =>
       _collection.doc(object.id).update(object.toFirestore());
 
-  // Supprime un document à la collection.
+  /// Supprime un document à la collection.
   void delete(String doc) => _collection.doc(doc).delete();
 
   /* ------------------------------ Récupération ------------------------------ */
 
-  // Retourne tout les documents de la collection.
+  /// Retourne tout les documents de la collection.
   Future<List<Map<String, dynamic>>> fetchAll() => getList(_collection.get());
 
-  // Retourne un document de la collection.
+  /// Retourne un document de la collection.
   Future<Map<String, dynamic>> fetch(String doc) =>
       _collection.doc(doc).get().then((DocumentSnapshot doc) => _setId(doc));
 
   /* --------------------------- Méthodes Publiques --------------------------- */
 
-  // Retourne une liste de documents.
+  /// Retourne une liste de documents.
   Future<List<Map<String, dynamic>>> getList(
       Future<QuerySnapshot<Map<String, dynamic>>> data) {
     final List<Map<String, dynamic>> list = [];
@@ -56,7 +56,7 @@ class FirebaseService {
 
   /* ---------------------------- Méthodes Privées ---------------------------- */
 
-  // Ajoute l'id du document.
+  /// Ajoute l'id du document.
   Map<String, dynamic> _setId(DocumentSnapshot doc) {
     Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     data['id'] = doc.id.toString();
