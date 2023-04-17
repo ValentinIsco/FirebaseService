@@ -44,7 +44,7 @@ class FirebaseService {
   /// Retourne une liste de documents.
   Future<List<Map<String, dynamic>>> getList(
       Future<QuerySnapshot<Map<String, dynamic>>> data) {
-    final List<Map<String, dynamic>> list = [];
+    List<Map<String, dynamic>> list = [];
     return data.then((QuerySnapshot<Map<String, dynamic>> querySnapshot) {
       for (DocumentSnapshot docSnapshot in querySnapshot.docs) {
         Map<String, dynamic> data = _setId(docSnapshot);
